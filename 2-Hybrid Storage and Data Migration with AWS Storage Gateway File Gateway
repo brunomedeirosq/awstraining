@@ -1,0 +1,49 @@
+Lab overview
+With AWS Storage Gateway, you can connect an on-premises software appliance with cloud-based storage to provide a seamless and secure integration between your on-premises IT environment and AWS’s storage infrastructure. For instance, you could securely upload data currently stored on-premises to the AWS cloud for cost effective backup and rapid disaster recovery.
+
+The AWS Storage Gateway service is ideal for hybrid deployments and migration solutions looking to bridge traditional on-premises servers and storage protocols with cloud native services such as Amazon Simple Storage Service (Amazon S3) and Amazon Elastic Block Store (Amazon EBS). Customers can connect to AWS Storage Gateway in a number ways, such as file-based access, block level access, and virtual tape access.
+
+In this lab, you use the File Gateway service to attach an NFS mount to an on-premises data store and replicate that data to an Amazon S3 bucket. Additionally, you configure advanced Amazon S3 features: S3 Lifecycle Policies and Cross-Region Replication (CRR).
+
+This lab is spread over three regions representing the on-premises data center, the backup region where the File Gateway runs, and a third region that is used for S3 CRR allowing the data stored in the backup region to be replicated securely to a region closer to another set of customers.
+
+TOPICS COVERED
+By the end of this lab, you will know how to:
+
+Configure an AWS Storage Gateway file gateway with an NFS file share and attach it to a Linux instance.
+Migrate a set of data from the Linux instance to an S3 bucket.
+Create and configure a primary S3 bucket to migrate on-premises server data to.
+Create and configure a secondary S3 bucket to use for Cross-Region Replication.
+Create an S3 replication policy to automatically replicate data from an S3 bucket to another S3 bucket in a separate region.
+
+Task 1: Review the lab architecture
+This lab environment uses three AWS Regions in total. A Linux Amazon Elastic Compute Cloud (Amazon EC2) instance to emulate an on-premises server is deployed to the us-east-1 (N. Virginia) region. The Storage Gateway virtual appliance is deployed to the same region as the Linux instance. In a real-world scenario, the appliance would be deployed in a VMware vSphere or Microsoft Hyper-V environment, or as a physical Storage Gateway appliance.
+
+You create the primary S3 bucket in the us-east-2 (Ohio) region, which is where the data from the Linux instance is copied to.
+
+You create the secondary S3 bucket in the us-west-2 (Oregon) region, which is the target for the S3 Cross-Region Replication policy.
+
+Task 1: Review the lab architecture
+This lab environment uses three AWS Regions in total. A Linux Amazon Elastic Compute Cloud (Amazon EC2) instance to emulate an on-premises server is deployed to the us-east-1 (N. Virginia) region. The Storage Gateway virtual appliance is deployed to the same region as the Linux instance. In a real-world scenario, the appliance would be deployed in a VMware vSphere or Microsoft Hyper-V environment, or as a physical Storage Gateway appliance.
+
+You create the primary S3 bucket in the us-east-2 (Ohio) region, which is where the data from the Linux instance is copied to.
+
+You create the secondary S3 bucket in the us-west-2 (Oregon) region, which is the target for the S3 Cross-Region Replication policy.
+
+Task 2: Create the primary and backup S3 buckets
+Before configuring the file gateway, you must create the Amazon S3 bucket to replicate the data to. In this task, you create the primary S3 bucket in the us-east-2 (Ohio) region, as well as an S3 bucket in the us-west-2 (Oregon) region that is be used for Cross-Region Replication.
+
+Task 3: Enable Cross-Region Replication
+Now that the S3 buckets are created and versioning is enabled on both, you can create a Replication Policy. A Replication Policy defines a bucket, or objects in a bucket, you wish to replicate from, and which bucket to replicate to.
+
+Task 4: Configure the file gateway and create an NFS file share
+You are now ready to deploy and configure the Storage Gateway file gateway appliance.
+
+In this task, you deploy a Storage Gateway file gateway appliance as an Amazon EC2 instance. You then configure a cache disk, select an S3 bucket to synchronize your on-premises files to, and select an IAM policy to use. Finally, you create an NFS file share on the file gateway.
+
+Configured an AWS Storage Gateway file gateway with an NFS file share and attached it to a Linux instance.
+Migrated a set of data from the Linux instance to an S3 bucket.
+Created and configured a primary S3 bucket to migrate on-premises server data to.
+Created and configured a secondary S3 bucket to use for Cross-Region Replication.
+Created an S3 replication policy to automatically replicate data from an S3 bucket to another S3 bucket in a separate region.
+After your data is stored in S3, you can act on it just like native S3 data. In this lab, you created a replication policy to copy the data to a secondary region. You could perform other operations as well, such as configuring a lifecycle policy to automatically migrate infrequently used data from S3 Standard to S3 Glacier for long term storage, reducing costs.
