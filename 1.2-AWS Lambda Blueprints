@@ -1,0 +1,11 @@
+AWS Lambda Blueprints
+
+Blueprints are sample configurations of event sources and Lambda functions that do minimal processing for you.
+
+Most blueprints process events from specific event sources, such as Amazon S3 or DynamoDB.
+For example, if you select an s3-get-object blueprint,
+it provides sample code that processes an object-created event published by Amazon S3 that Lambda receives as parameter.
+
+When you create a new AWS Lambda function, you can use a blueprint that best aligns with your scenario.
+You can then customize the blueprint as needed.
+You do not have to use a blueprint (you can author a Lambda function and configure an event source separately).

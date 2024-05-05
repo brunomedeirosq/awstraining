@@ -1,0 +1,17 @@
+AWS Lambda
+
+AWS Lambda is a compute service that provides resizable compute capacity in the cloud to make web-scale computing easier for developers.
+
+You can upload your code to AWS Lambda and the service can run the code on your behalf using AWS infrastructure.
+
+AWS Lambda supports multiple coding languages: Node.js, Java, or Python.
+
+After you upload your code and create a Lambda function, AWS Lambda takes care of provisioning and managing the servers that you use to run the code.
+
+In this lab, you use AWS Lambda as an event-driven compute service where AWS Lambda runs your code in response to changes to data in and SNS topic and an Amazon S3 bucket.
+
+You can use AWS Lambda in two ways:
+
+- As an event-driven compute service where AWS Lambda runs your code in response to events, such as uploading image files as you’ll see in this lab.
+
+- As a compute service to run your code in response to HTTP requests using Amazon API Gateway or API calls.

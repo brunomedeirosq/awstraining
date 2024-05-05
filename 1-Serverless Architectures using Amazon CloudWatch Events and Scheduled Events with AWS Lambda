@@ -1,0 +1,16 @@
+Serverless Architectures using Amazon CloudWatch Events and Scheduled Events with AWS Lambda
+
+Lab overview
+This lab demonstrates how to create serverless infrastructure that can monitor your cloud infrastructure and respond to events.
+In the first part of this lab, you learn how to use an AWS Lambda function with Amazon CloudWatch Events to react to the creation of an Amazon EC2 instance.
+In the second part of this lab, you create an AWS Lambda function that can monitor a website and alert you when it is not responding correctly.
+
+OBJECTIVES
+By the end of this lab, you should be able to do the following:
+
+Create an AWS Lambda function
+Configure Amazon CloudWatch Events
+Configure an Amazon CloudWatch Alarm
+Configure Amazon Simple Notification Service (SNS) to send notifications
+
+
