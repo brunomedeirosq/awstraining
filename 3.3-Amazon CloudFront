@@ -1,0 +1,11 @@
+Amazon CloudFront
+
+Amazon CloudFront is a web service that speeds up distribution of static and dynamic web content, such as .html, .css, .php, and image files.
+CloudFront delivers content through a worldwide network of data centers called edge locations.
+When a user requests content through CloudFront, the user is routed to the edge location that provides the lowest latency (time delay),
+so that content is delivered with the best possible performance.
+If the content is already in the edge location with the lowest latency, CloudFront delivers it immediately.
+If the content is not in that edge location, CloudFront retrieves it from an Amazon S3 bucket or an HTTP server (for example, a web server)
+that you have identified as the source for the definitive version of your content.
+
+Amazon CloudFront can produce access logs that show all data requested by users. The log files can grow very large, so Hadoop is an ideal way to process and analyze the log files.

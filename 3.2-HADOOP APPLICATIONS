@@ -1,0 +1,25 @@
+HADOOP APPLICATIONS
+
+The default configuration automatically installs several default applications on the cluster:
+
+Apache Hadoop is an open-source software project that can be used to efficiently process large datasets.
+Instead of using one large computer to process and store the data, Hadoop uses clusters of commodity hardware to analyze massive data sets in parallel.
+
+The Ganglia open-source project is a scalable, distributed system designed to monitor clusters and grids while minimizing the impact on their performance.
+Ganglia can generate reports and view the performance of the cluster as a whole, as well as inspect the performance of individual nodes.
+
+Apache Tez is a framework for creating a complex directed acyclic graph (DAG) of tasks for processing data.
+In some cases, it is used as an alternative to Hadoop MapReduce.
+For example, Pig and Hive workflows can run using Hadoop MapReduce or they can use Tez as an execution engine.
+
+Hive is an open-source data warehouse and analytic package that runs on top of a Hadoop cluster.
+Hive scripts use an SQL-like language called Hive QL (query language) that abstracts programming models and supports typical data warehouse interactions.
+Hive enables you to avoid the complexities of writing Tez jobs based on directed acyclic graphs (DAGs) or MapReduce programs in a lower level computer language, such as Java.
+
+Hue (Hadoop User Experience) is an open-source, web-based, graphical user interface for use with Amazon EMR and Apache Hadoop.
+Hue groups together several different Hadoop ecosystem projects into a configurable interface for your Amazon EMR cluster.
+
+Pig is an open-source Apache library that runs on top of Hadoop.
+The library takes SQL-like commands written in a language called Pig Latin and converts those commands into Tez jobs
+based on directed acyclic graphs (DAGs) or MapReduce programs.
+You do not have to write complex code using a lower level computer language, such as Java.

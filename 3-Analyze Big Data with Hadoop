@@ -1,0 +1,41 @@
+Analyze Big Data with Hadoop
+
+In this lab, you will deploy a fully functional Hadoop cluster, ready to analyze log data in just a few minutes.
+You will start by launching an Amazon EMR cluster and then use a HiveQL script to process sample log data stored in an Amazon S3 bucket.
+HiveQL is a SQL-like scripting language for data warehousing and analysis. You can then use a similar setup to analyze your own log files.
+
+In this course, you will learn how to:
+
+Launch a fully functional Hadoop cluster using **Amazon EMR**
+Define the schema and create a table for sample log data stored in Amazon S3
+Analyze the data using a **HiveQL** script and write the results back to Amazon S3
+Download and view the results on your computer
+Connect to the Hive CLI and run **HiveQL** query script to view the results
+
+Course Outline
+Task 1: Create an Amazon S3 bucket
+Task 2: Launch an Amazon EMR cluster
+Task 3: Process Your Sample Data by Running a Hive Script
+
+In this task, you run a Hive script in your cluster as a step in the Amazon EMR console to process your sample data.
+In Amazon EMR, a step is a unit of work that contains one or more Hadoop jobs.
+You can submit steps when you create the cluster or when the cluster is running (if it is a long-running cluster).
+
+Task 4: View the Results
+Task 5 : Connect to the EMR cluster CLI and perform query using HiveQL
+
+In this task, you connect to the EMR cluster using SSH tool. Once you access the EMR cluster, you switch to Hive application and run query using HiveQL.
+
+# Get EMR Cluster ID and export to the Environment.
+export ID=$(aws emr list-clusters | jq '.Clusters[0].Id' | tr -d '"')
+
+# Use the ID to get the PublicDNS name of the EMR Cluster
+# and export to the Environment.
+export HOST=$(aws emr describe-cluster --cluster-id $ID | jq '.Cluster.MasterPublicDnsName' | tr -d '"')
+
+# SSH to the EMR cluster
+ssh -i ~/EMRKey-lab.pem hadoop@$HOST
+
+
+Task 6: Terminate your Amazon EMR Cluster
+
