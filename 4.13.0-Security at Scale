@@ -1,0 +1,47 @@
+AWS Secrets Manager
+
+    helps store, manage, and rotate important configuration data, such as credentials, passwords, and license keys.
+
+
+
+Parameter Store
+
+Parameter Store provides a secure, managed key-value store.
+It's hierarchical based to help store configuration data and secrets management.
+A parameter is any piece of data saved in Parameter Store, such as a block of text, a list of names, a password, an AMI ID, or a license key.
+You can store parameters as encrypted or unencrypted data.
+Encryption is done using AWS Key Management Service (AWS KMS).
+
+Use Parameter Store for the following:
+- Passwords
+- Database strings
+- AMI IDs
+- License codes as parameter values
+
+Values are stored as plain text or encrypted data.
+
+Parameter Store workshop - https://mng.workshop.aws/ssm/capability_hands-on_labs/parameterstore.html
+
+Secrets Manager
+
+Secrets Manager helps store and manage important configuration data, such as credentials, passwords, and license keys.
+For example, applications can request passwords or information from Secrets Manager to connect to other resources, such as databases, to keep these credentials secure.
+When turned on, Secrets Manager automatically rotates your passwords and can generate random passwords for you.
+
+Parameter Store is integrated with Secrets Manager for applications or other AWS services to retrieve Secrets Manager secrets or non-security information contained in Parameter Store.
+These supported services include Amazon EC2, Lambda, CloudFormation, AWS CodeBuild, CodeDeploy, and other Systems Manager capabilities.
+Using Parameter Store to reference Secrets Manager secrets, creates a consistent and secure process for using reference data in your code and configuration files.
+
+Parameter Store versus Secrets Manager
+
+Uses AWS KMS for encryption = Uses AWS KMS for encryption
+Stores values as a key-value pair = Stores values as a key-value pair
+Interacts with CloudFormation to store secrets = Interacts with CloudFormation to store secrets
+Stores encrypted or unencrypted data = Stores only encrypted data
+Does not rotate secrets = Rotates secret automatically
+Has no random password generation = Offers random password generation
+Comes at no additional cost = 	Provides a free 30-day trial and then incurs a cost per secret, per month
+
+
+
+

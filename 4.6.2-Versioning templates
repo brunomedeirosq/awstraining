@@ -1,0 +1,4 @@
+For each launch template, you can create one or more numbered launch template versions.
+Each version can have different launch parameters. When you launch an instance from a launch template, you can use any version of the launch template.
+If you do not specify a version, the default version is used. You can set any of your launch template versions as the default version.
+However, if no default version is specified, the first version of the launch template is used.

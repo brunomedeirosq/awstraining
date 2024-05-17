@@ -1,0 +1,3 @@
+A block device mapping specifies the volumes to attach to the instance when it's launched.
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html

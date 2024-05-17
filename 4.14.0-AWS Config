@@ -1,0 +1,84 @@
+Using AWS Config - A service that provides a detailed view of AWS resource configuration changes over time
+
+AWS Config is a service that provides a detailed view of the configuration of AWS resources in your AWS account.
+
+This view includes how resources are related to one another and how they were configured in the past.
+
+With AWS Config, you can review how resource configurations and relationships change over time.
+
+AWS Config supports many AWS resource types, including Amazon EC2.
+
+You also can have AWS Config record software inventory changes on EC2 instances.
+
+https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html
+
+Core functionality of AWS Config: storing configuration changes over time, configuration evaluation, and reporting.
+
+AWS Config also provides you the option for noncompliance remediation of configuration changes.
+
+Working with AWS Config rules
+
+Configuration evaluations depend on the AWS Config rules you create for your AWS resources.
+
+An AWS Config rule represents your configuration settings for your AWS resources.
+
+If a resource does not pass a rule check, AWS Config flags the resource and the rule as noncompliant.
+
+The following are the possible evaluation results for an AWS Config rule:
+
+- COMPLIANT – The rule passes the conditions of the compliance check.
+
+- NON_COMPLIANT – The rule fails the conditions of the compliance check.
+
+- ERROR – One of the required or optional parameters is not valid, not of the correct type, or formatted incorrectly.
+
+- NOT_APPLICABLE – This result is used to filter out resources that the logic of the rule cannot be applied.
+  For example, the alb-desync-mode-check rule only checks Application Load Balancers and ignores Network Load Balancers and Gateway Load Balancers.
+
+You can create AWS Config rules from the console, AWS CLI, or AWS Config API.
+
+AWS Config rule types
+
+You have the following three options to add an AWS Config rule:
+
+- AWS managed rule – AWS Config provides predefined rules for all AWS resources it supports. You don't need to write or maintain the code for this option.
+
+- Custom Lambda rule – You can use Java or Python to create a Lambda function for your AWS Config custom rule.
+
+- Custom Guard rule – You can use the Guard domain-specific language to define your custom AWS Config rule. https://github.com/aws-cloudformation/cloudformation-guard
+
+In addition to reporting evaluation results, you have the option to include automatic or manual remediation for noncompliant resource configuration.
+
+AWS Config applies remediation using Systems Manager Automation documents.
+
+These documents define the actions to be performed on noncompliant AWS resources evaluated by AWS Config rules.
+
+The evaluation mode of Detective means AWS Config evaluates when a configuration change of a security group occurs or when you create a new security group.
+This rule doesn't support the other evaluation mode, which is proactive.
+
+Proactive evaluation means AWS Config evaluates a configuration change before the change is made.
+You can set your AWS Config rules to support either evaluation mode or both.
+
+Manual remediation for each noncompliant resource doesn't scale well because of the amount time and effort for potentially hundreds or more AWS resources.
+
+You have the option to specify whether AWS Config automatically or manually remediates on your behalf.
+
+Using conformance packs
+
+A precise way to manage your AWS resource configuration changes is to deploy and manage individual AWS Config rules.
+
+However, AWS Config records configuration changes for resources in the Region in which it is running.
+
+If you have multiple Regions, creating individual AWS Config rules might not be the preferred method for deployment of your rules.
+
+In addition to AWS Config templates and managed rules, AWS provides conformance packs to help you deploy your AWS Config rules.
+
+A conformance pack is a collection of AWS Config rules and remediation actions that can be deployed as a single entity in an account and a Region.
+
+You can use conformance packs created by AWS, or you can create your own using YAML.
+
+Using AWS Config to detect banned applications -> This hands-on workshop walks you through creating an AWS Config rule to detect when banned applications are installed. -> https://catalog.workshops.aws/getting-started-with-com/en-US/operations-management/create-aws-config-rule
+
+Conformance packs -> https://docs.aws.amazon.com/config/latest/developerguide/conformance-packs.html
+
+Getting Started with AWS Config -> AWS Training and Certification offers training on AWS Config. -> https://explore.skillbuilder.aws/learn/course/external/view/elearning/12609/getting-started-with-aws-config

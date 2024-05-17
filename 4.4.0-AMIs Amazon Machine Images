@@ -1,0 +1,28 @@
+An AMI is a template that contains the software configuration required to launch a virtual compute instance.
+
+This information includes the operating system, any preinstalled software, and the configuration files required to run the instance.
+An AMI can be very basic, such as containing only the operating system, or as complex as your needs dictate.
+
+To launch a new EC2 instance, you need an AMI. A single AMI can launch multiple identical EC2 instances.
+You can use an AMI provided by AWS or by the AWS community or an AMI purchased from the AWS Marketplace.
+You can also create your own. You can share, buy, or sell AMIs.
+
+Standardizing your deployed EC2 instances makes daily administration and troubleshooting less complicated.
+A standard image, stops unknown applications, agents, utilities, or one-off configurations that might require additional troubleshooting in the event of an unexpected issue.
+You can create a set of golden images for the different EC2 instance types and configurations in use.
+A golden image is the finalized, approved version of an instance used to create multiple copies of that image.
+
+Pieces of an AMI
+
+An AMI includes the
+root volume,
+launch permissions,
+and a block device mapping.
+
+Bootstrapping, prebaking, and Image Builder are resources to build and automate your AMIs with version control.
+Part of the automation process includes how you manage the lifecycle of your AMIs and the data included in them.
+
+
+
+
+

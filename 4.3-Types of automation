@@ -1,0 +1,41 @@
+AWS offers a variety of automation options depending your business goals.
+
+1. Infrastructure automation
+
+With infrastructure automation, you can build infrastructure components with a template that includes all the AWS resources that you want.
+Example resources you can include are EC2 instances or Amazon Relational Database Service (Amazon RDS) DB instances.
+After you create the template, the infrastructure automation tool takes care of provisioning and configuring the resources for you.
+You do not need to individually create and configure resources.
+You can replicate the templates across your organization and deploy them in identical infrastructure across AWS Regions and accounts.
+Use version-controlled templates for troubleshooting and compliance data.
+
+AWS CloudFormation is the AWS tool for infrastructure automation.
+
+
+2. Deployment automation
+
+With deployment automation, you use cloud-centered tools to reduce manual efforts, whether through automating applications or using code to reduce manual effort.
+The use of automation increases velocity of deployments and decreases technical error caused by manual inputs.
+
+AWS tools include the following:
+
+AWS CodeDeploy
+AWS Lambda
+AWS CodePipeline
+AWS Auto Scaling
+AWS Systems Manager
+
+3. Self-healing and Self-monitoring
+
+With self-healing and self-monitoring, the resources make proactive corrections and notifications when resources change.
+
+Monitoring tools and configuration management scripts proactively create alarms and notifications and resolve issues.
+For example, when an instance doesn't respond, it is put into an unhealthy state.
+The tool deploys a new instance, or your load balancer automatically shifts traffic patterns to a healthy instance and notifies the team of the situation.
+
+AWS tools include the following:
+
+Lambda
+AWS Config
+Amazon Inspector
+AWS CloudTrail

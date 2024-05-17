@@ -1,0 +1,23 @@
+Prebaking, sometimes called AMI baking, is the process of embedding a significant portion of your application artifacts in the AMI.
+
+The launch time for the prebaked AMI is the same as launching a basic AMI with just an operating system on it.
+The launch time is the same because all the time-consuming tasks, such as installing applications, utilities, and patches, are already complete.
+They are done when you bake the applications into the instance. When you launch the instance, the applications are already on it.
+In contrast, adding the user data script to an instance makes the provisioning slower. This is because the applications are installed and patched only after the EC2 instance is up and running.
+
+Prebaking is less flexible than bootstrapping because it's more difficult to modify the AMI after all the applications are installed and configured.
+You can combine prebaking and bootstrapping practices during the deployment process to quickly create new instances customized to the current environment.
+
+1-Launch an EC2 instance
+The first step in prebaking is to launch the appropriate Amazon EC2 image you want to work with.
+
+2-Configure applications
+After launching the EC2 instance, install and configure any operating system patches, applications, dependencies, updates, utilities, system agents, and anything else required to run on the instance.
+When you're at this point, the instance looks like it would if you were to deploy it as part of your workload. This is a golden image.
+
+3-Create an AMI
+After your EC2 instance is configured with all the required software, you can create an AMI of this instance.
+
+4-Deploy an instance using your prebaked AMI
+After the AMI is complete, you can deploy multiple identical copies of this instance with all your software installed and configured.
+Prebaking application components into an AMI can speed up the time to launch and operationalize an EC2 instance.

@@ -1,0 +1,67 @@
+Defining CloudFormation
+
+CloudFormation is a managed service that helps you model and deploy your AWS resources through automation.
+
+With CloudFormation, you submit one request to the AWS API to deploy your resources into your AWS environment.
+
+CloudFormation handles setting up and configuring each AWS resource that you specify.
+
+To have CloudFormation deploy your AWS resources, provide it with a CloudFormation template.
+
+A template defines all your resources and their properties.
+
+CloudFormation uses your template to create a CloudFormation stack, which is a collection of the AWS resources CloudFormation creates on your behalf.
+
+Minimally, a CloudFormation template requires the Resources section, which must declare at least one resource.
+
+CloudFormation templates offer a repeatable and consistent way to manage your AWS resources. They also provide flexibility and extensibility to fit your exact needs.
+
+Example AWS CloudFormation template in yaml format (can also be in json):
+
+Parameters:
+  LatestAmiId:
+    Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
+    Default: /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2
+
+Resources:
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.medium
+      ImageId: !Ref LatestAmiId   # Referencing the LatestAmiId value
+
+The updated template creates a logical ID named LatestAmiID in the Parameters section.
+This parameter type is AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>,
+which is a way to make use of values stored in the Parameter Store.
+The Default name value specifies the public parameter of the latest Region-specific AMI for Amazon Linux.
+This is a value stored in the Parameter Store.
+
+The ImageId name value uses the Ref function to pull in the specified value of LatestAmiId.
+By using a parameter for the ImageId, the template becomes flexible and reusable.
+You can further modify this template to remove the other hard-coded value for the EC2 instance.
+You do this by adding a parameter that provides a choice of EC2 instance types.
+
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html
+
+
+Reusing templates
+
+CloudFormation provides a way to manage your templates so that you must only make one change to impact each instance where the component exists.
+In CloudFormation, this practice is called nested stacks.
+
+When you change or delete a stack, CloudFormation operates on the root stack first and then each nested stack.
+
+CloudFormation updates only the resources in the nested stacks that have changes specified in corresponding templates.
+
+Additional resources:
+
+    - CloudFormation templates:
+        https://aws.amazon.com/cloudformation/resources/templates/
+
+    - Amazon EC2 CloudFormation templates:
+        https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/sample-templates-services-us-west-2.html#w4ab1c35c58c13c17
+
+
+
+
+

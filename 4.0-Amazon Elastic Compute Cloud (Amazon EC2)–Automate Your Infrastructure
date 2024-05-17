@@ -1,0 +1,25 @@
+4-Amazon Elastic Compute Cloud (Amazon EC2)–Automate Your Infrastructure
+
+Manually managing a large Amazon EC2 environment is time-consuming.
+As your Amazon Web Services (AWS) environment scales, administrative tasks, such as provisioning, managing, and monitoring your instances, introduce new challenges to existing resources.
+This course explores automation tools and techniques for your Amazon EC2 workloads.
+The course covers a variety of AWS provided tools to assist you in your automation goals and standardize your deployments.
+It also covers how to monitor and observe your infrastructure to ensure your automation compliance.
+
+By the end of this course, you should be able to do the following:
+
+- Describe the concepts and benefits of automating your Amazon EC2 infrastructure.
+- Build, manage, and deploy Amazon Machine Images (AMIs).
+- Automate and launch EC2 instances at scale.
+- Implement mechanisms to automate inventory, patching, and auditing.
+- Manage and secure instance configuration data.
+
+Sofía created an action plan to address the tasks that require the most time.
+She uses the action plan to identify the areas where her team needs training.
+They include the following:
+
+Standardize all provisioned EC2 instances based on company policy.
+Automatically scale infrastructure based on use.
+Prohibit deployments of nonstandard and unapproved resources.
+Automate patching and inventory.
+Create an observability and monitoring plan for security and compliance initiatives.

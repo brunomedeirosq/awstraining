@@ -1,0 +1,129 @@
+AWS inventory service ->
+
+The team needs to identify all the applications running and ensure that they are in use, up to date with patches, and properly licensed.
+They want to verify licensing and get rid of any unauthorized applications and any software or tools not approved by their security operations team.
+
+Inventory
+
+Inventory, a capability of AWS Systems Manager, provides visibility into your environment.
+Inventory collects metadata from your managed instances and stores it in an S3 bucket.
+You can use built-in tools to query the data to determine which instances are running software and configurations required by your software policy.
+With Inventory, you can view data from multiple Regions and accounts.
+
+When you configure Inventory, you specify the following:
+
+- The type of metadata to collect
+- The managed nodes to collect the data from
+- A schedule for metadata collection
+
+These configurations are saved with your AWS account as a State Manager association.
+An association is a configuration.
+
+Metadata collection
+
+When you configure inventory collection, you begin by creating the association.
+Systems Manager collects the inventory data when the association runs.
+If you don't create the association first and attempt to invoke the inventory, the system returns the following error:
+
+The aws:softwareInventory plugin can only be invoked through ssm-associate.
+
+Inventory collects specific types of metadata. To see what it collects, expand each of the following two sections.
+
+- Preconfigured metadata
+
+You can configure Inventory to collect the following types of data:
+
+Applications: Application names, publishers, versions, etc.
+
+AWS components: EC2 driver, agents, versions, etc.
+
+Files: Name, size, version, installed date, modification and last accessed times, etc.
+
+Network configuration: IP address, MAC address, DNS, gateway, subnet mask, etc.
+
+Windows updates: Hotfix ID, installed by, installed date, etc.
+
+Instance details: System name, operating systems (OS) name, OS version, DNS, domain, work group, OS architecture, etc.
+
+Services: Name, display name, status, dependent services, service type, start type, etc.
+
+Tags: Tags assigned to your nodes.
+
+Windows Registry: Registry key path, value name, value type, and value.
+
+Windows roles: Name, display name, path, feature type, installed state, etc.
+
+https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-inventory.html
+
+- Custom metadata
+
+If the preconfigured metadata types collected don't meet your needs, you can create a custom inventory.
+A custom inventory is a JSON file with information that you provide.
+To assign custom inventory to a node, you can use the Systems Manager PutInventory API operation.
+You can also create a custom inventory JSON file and upload it to the node.
+
+When Inventory collects data, it also captures your custom inventory data.
+For example, if you run a large data center, you can specify the rack location of each of your servers as custom inventory.
+You can view the rack space data when you view other inventory data. Systems Manager supports a maximum of 20 custom inventory types per AWS account.
+
+Example:
+
+{
+
+    "SchemaVersion": "1.0",
+
+    "TypeName": "Custom:RackInformation",
+
+    "Content": {
+
+        "Location": "US-EAST-02.CMH.RACK1",
+
+        "InstalledTime": "2016-01-01T01:01:01Z",
+
+        "vendor": "DELL",
+
+        "Zone" : "BJS12",
+
+        "TimeZone": "UTC-8"
+
+      }
+
+ }
+
+https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-custom.html
+
+When running Inventory, determine whether to inventory the following:
+
+- All managed nodes in your AWS account
+- Individually selected nodes
+- Targeted groups of nodes by using tags
+
+Inventory supports searching inventory files on Windows, Linux, and macOS operating systems; the Windows Registry; and individual files.
+You can collect metadata information about files, including file names, the time files were created, the time files were last modified and accessed, and file sizes.
+
+To start collecting file inventory, specify a file path where you want to perform the inventory.
+Also, specify one or more patterns that define the types of files you want to inventory and if the path should be traversed recursively.
+Systems Manager inventories all file metadata for files that match the pattern in the specified path.
+
+Example:
+
+{
+
+"Path": string,
+
+"Pattern": array[string],
+
+"Recursive": true,
+
+"DirScanLimit" : number // Optional
+
+}
+
+Inventory hands-on workshop
+
+https://mng.workshop.aws/ssm/capability_hands-on_labs/inventory.html#:~:text=AWS%20Systems%20Manager%20Inventory%20provides,metadata%20from%20your%20managed%20instances.
+
+Systems Manager Inventory walkthroughs
+
+https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-walk.html
+

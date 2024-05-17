@@ -1,0 +1,8 @@
+Image Builder generates new images based on events, such as each time there is a pending update.
+This can include source AMI updates, security updates, updates to compliance, or new tests, for example.
+Image Builder also generates images based on a specific build cadence.
+A build cadence is a set sequence at which new golden images are produced with the latest changes by applying pending changes.
+
+You can test the latest images with Image Builder to validate your applications on the updated builds.
+You can also subscribe to notifications from Amazon Simple Notification Service (Amazon SNS) queues for pending updates to images built with Image Builder.
+You can use these notifications as events to build new images.

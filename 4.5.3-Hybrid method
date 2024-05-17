@@ -1,0 +1,21 @@
+The hybrid method incorporates the use of both bootstrapping and prebaking to make your processes and deployments faster.
+
+With a hybrid of bootstrapping and prebaking, you improve performance by installing the applications ahead of time.
+You also keep the flexibility to customize as needed using user data.
+
+1-Launch a base instance
+Launch a base EC2 instance as you normally would.
+
+2-Prebake the instance but do not configure it
+Install the patches, applications, and agents, but do not configure the application or add customer or vendor-specific information.
+This step prebakes a generic version of your software onto the base operating system.
+It differs from prebaking in that you do not include any configuration information.
+
+3-Create an AMI
+Next, create an AMI containing the prebaked applications.
+This instance has all the software and dependencies preinstalled, but none of the applications are configured.
+
+4-Bootstrap the instance
+Now, use the prebaked AMI and add a user data script to run at the launch of the AMI to configure it with customized information.
+This essentially bootstraps the information when the instance launches.
+

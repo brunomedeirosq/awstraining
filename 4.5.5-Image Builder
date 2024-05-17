@@ -1,0 +1,20 @@
+AWS provides resources to automate AMI updates and provide version control for your AMIs.
+The first tool to discuss is EC2 Image Builder.
+
+Image Builder is a fully managed AWS service that helps automate the creation, management, and deployment of customized server images.
+You maintain ownership of any customized images that Image Builder creates in your account.
+
+With Image Builder, you configure pipelines to automate updates and patching for the images you own.
+You can also run non-pipeline commands to create a one-off image with the configuration resources you defined.
+
+Image Builder helps significantly reduce the effort of keeping images up to date and secure by providing a basic interface, built-in automation, and AWS security settings.
+
+When software updates become available, Image Builder automatically produces a new image without requiring users to manually initiate image builds.
+AWS offers Image Builder at no cost. It integrates with AWS Organizations and shares AMIs across accounts based on your existing AMI sharing mechanisms.
+
+You use Image Builder with the console, AWS CLI, or APIs. When used with the console, Image Builder provides a step-by-step wizard to guide you through the process.
+
+You can monitor the progress of your image builds and have Amazon CloudWatch Events notify you for troubleshooting and debugging.
+
+Image Builder also generates a recipe file. You can use this file with existing source code version control systems and continuous integration and continuous delivery (CI/CD) pipelines for repeatable automation.
+When software updates become available, Image Builder automatically produces a new image and distributes it to stipulated Regions after running tests on it.

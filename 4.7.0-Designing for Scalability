@@ -1,0 +1,20 @@
+EC2 instances and Availability Zones
+
+Amazon EC2 provides the ability to spread instances across all the Availability Zones in your Regions.
+
+By launching instances in separate Availability Zones, you protect your applications from the failure of any single location.
+
+This improves the availability of your workloads in the event of planned or unplanned interruptions.
+
+When configuring instances across Availability Zones, ensure that there is an equal distribution of instances across all the Availability Zones you use.
+
+For example, if you have nine instances and three Availability Zones, you can spread the instances out by putting three instances into each Availability Zone.
+If one Availability Zone becomes unavailable, then only three instances are impacted.
+
+To ensure that you always have enough instances available and equally spread across the Availability Zones in your Region,
+use Amazon EC2 Auto Scaling.
+
+Scaling is defined as the ability to increase or decrease the compute capacity of your application or workload.
+
+Whether you want to modify capacity or guarantee specific numbers of servers are always running, you can do both with Amazon EC2 Auto Scaling.
+

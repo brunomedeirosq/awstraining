@@ -1,0 +1,181 @@
+Amazon EC2 Auto Scaling helps ensure that you have the correct number of EC2 instances available to handle the load for your application.
+
+To do this, you create collections of EC2 instances called Amazon EC2 Auto Scaling groups.
+
+You can specify the minimum and maximum number of instances in each group.
+
+Amazon EC2 Auto Scaling ensures that your group never goes below or above the number of instances you configure.
+
+You can configure the capacity when you create the group or at any time thereafter.
+
+After you specify the desired capacity, Amazon EC2 Auto Scaling ensures that your group maintains that number of instances.
+
+When you use scaling policies, Amazon EC2 Auto Scaling launches or terminates instances on demand as your application use increases or decreases.
+
+
+
+Understanding your workloads:
+
+
+mazon EC2 Auto Scaling provides many ways to adjust scaling to best meet the needs of your applications.
+As a result, it's important that you have a good understanding of your application.
+
+Keep the following considerations in mind:
+
+- Which role should Amazon EC2 Auto Scaling play in your application's architecture?
+
+It's common to think about automatic scaling primarily as a way to increase and decrease capacity, but it's also useful for maintaining a steady number of servers.
+
+- Which cost constraints are important to you?
+
+Because Amazon EC2 Auto Scaling uses EC2 instances, you only pay for the resources you use. Knowing your cost constraints helps you decide when to scale your applications and by how much.
+
+- Which metrics are important to your application?
+
+Amazon CloudWatch supports a number of different metrics you can use with your Amazon EC2 Auto Scaling group.
+
+
+Setting the number of instances
+
+f you need a fixed number of instances, you can set the same value for minimum, maximum, and desired capacity.
+After you create your Amazon EC2 Auto Scaling group, the group starts by launching enough instances to meet its desired capacity.
+If there are no other scaling conditions attached to the group, it maintains this number of running instances at all times.
+Your Amazon EC2 Auto Scaling group continues to maintain a fixed number of instances even if an instance becomes unhealthy.
+
+
+Health checks for auto scaling instances
+
+Amazon EC2 Auto Scaling monitors the health of each auto scaling instance.
+The health status of an auto scaling instance indicates whether it's healthy or unhealthy.
+All instances in your Amazon EC2 Auto Scaling group start with a healthy status.
+Instances are assumed to be healthy unless Amazon EC2 Auto Scaling receives notification that they are unhealthy.
+This notification can come from sources such as Amazon EC2, ELB, or custom health checks.
+
+When Amazon EC2 Auto Scaling detects an unhealthy instance, it terminates that instance and launches a new one.
+
+Instances can fail a health check for a variety of reasons.
+
+Health Check Type -> What It Checks
+
+Amazon EC2 status checks and scheduled events -> This health check type verifies the instance is running and looks for underlying hardware or software issues.
+
+                                                 This is the default health check for an Amazon EC2 Auto Scaling group.
+
+ELB health checks -> This health check type verifies if the load balancer reports the instance as healthy and confirms if the instance is available to handle requests.
+
+                     To run this health check type, you must activate it for your Amazon EC2 Auto Scaling group.
+
+Amazon VPC Lattice health checks -> This health check type verifies if Amazon Virtual Private Cloud (Amazon VPC) Lattice reports the instance as healthy. It also confirms if the instance is available to handle requests.
+
+                                    To run this health check type, you must activate it for your Amazon EC2 Auto Scaling group.
+
+
+Custom health checks -> This health check type looks for any other problems that might indicate instance health issues according to your custom health checks.
+
+
+
+Consider different ways to scale:
+
+- Manual scaling
+
+Manual scaling is the most basic way to scale your resources. You specify the change in the maximum, minimum, or desired capacity of your Amazon EC2 Auto Scaling group.
+Amazon EC2 Auto Scaling manages the process of creating or terminating instances to maintain the updated capacity.
+
+https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-manual-scaling.html
+
+- Dynamic scaling
+
+Dynamic scaling scales the capacity of your Amazon EC2 Auto Scaling group as traffic changes occur.
+You define a scaling policy that dynamically resizes your Amazon EC2 Auto Scaling group to meet changes in demand.
+
+For example, let's say you have a web application that currently runs on two instances.
+You want the CPU utilization of the Amazon EC2 Auto Scaling group to stay at around 50 percent when the load on the application changes.
+Dynamic scaling is useful for scaling in response to changing conditions.
+If you don't know when the conditions will change, you can set up Amazon EC2 Auto Scaling to respond for you.
+
+https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html
+
+Amazon EC2 Auto Scaling supports the following types of dynamic scaling policies:
+
+Target tracking scaling – Increase and decrease the current capacity of the group based on a CloudWatch metric and a target value. It works similar to the way your thermostat maintains the temperature of your home—you select a temperature, and the thermostat does the rest.
+
+Step scaling – Increase and decrease the current capacity of the group based on a set of scaling adjustments, known as step adjustments. These adjustments vary based on the size of the alarm breach.
+
+Simple scaling – Increase and decrease the current capacity of the group based on a single scaling adjustment with a cooldown period between each scaling activity.
+
+
+- Predictive scaling
+
+
+Use predictive scaling to increase the number of EC2 instances in your Amazon EC2 Auto Scaling group in advance of daily and weekly patterns in traffic flows.
+
+Predictive scaling is well suited for situations where you have the following:
+
+Cyclical traffic, such as high use of resources during regular business hours and low use of resources during evenings and weekends
+
+Recurring on-and-off workload patterns, such as batch processing, testing, or periodic data analysis
+
+Applications that take a long time to initialize, causing a noticeable latency impact on application performance during scale-out events
+
+You can combine predictive scaling and dynamic scaling to scale your Amazon EC2 capacity faster.
+
+https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-predictive-scaling.html
+
+Scheduled scaling helps you to set up your own scaling schedule according to predictable load changes. For example, let's say that every week the traffic to your web application starts to increase on Wednesday. It then remains high on Thursday and starts to decrease on Friday. You can configure a schedule for Amazon EC2 Auto Scaling to increase capacity on Wednesday and decrease capacity on Friday.
+
+
+- Schedule scaling
+
+
+Scaling by schedule means that Amazon EC2 Auto Scaling performs the scaling actions automatically as a function of time and date.
+This is useful when you know exactly when to increase or decrease the number of instances in your group because the need is predictable.
+
+https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html
+
+
+Latency mitigation:
+
+Amazon EC2 Auto Scaling  is a powerful tool to help keep a consistent experience for your users.
+However, it takes time to spin up a new instance, whether it's prebaked or using a user data script.
+There are steps you can take to mitigate the time it takes to add new instances to your workloads.
+
+Warm pool
+
+A warm pool is a pool of preinitialized EC2 instances that sits alongside an Amazon EC2 Auto Scaling group.
+When your application needs to scale out, the group can draw on the warm pool to meet its new desired capacity.
+This helps you ensure that instances are ready to quickly start serving application traffic, which accelerates the response to a scale-out event.
+As instances leave the warm pool, they count toward the desired capacity of the group. This is known as a warm start.
+
+With a warm pool, you can decrease latency for your applications that have exceptionally long boot times.
+For example, instances that need to write massive amounts of data to disk.
+With warm pools, you don't need to overprovision your Amazon EC2 Auto Scaling groups to manage latency and improve application performance.
+
+Warm pool instance state
+
+You can keep instances in the warm pool in one of three states: stopped, running, or hibernated.
+
+Keeping instances in a stopped state is an effective way to minimize costs. With stopped instances, you pay only for the volumes you use and the Elastic IP addresses attached to the instances.
+
+Alternatively, you can keep instances in a hibernated state to stop them without deleting their memory contents or RAM.
+When an instance is hibernated, this signals the operating system to save the contents of your RAM to your EBS volume.
+When the instance is started again, the EBS volume is restored to its previous state, and the RAM contents are reloaded. W
+hile the instances are in hibernation, you pay only for the EBS volumes. This includes storage for the RAM contents and the Elastic IP addresses attached to the instances.
+
+Keeping instances in a running state inside the warm pool is also possible, but we highly discourage it to avoid incurring unnecessary charges.
+When instances are stopped or hibernated, you save the cost of the instances themselves. You pay for the instances only when they are running.
+
+Lifecycle hooks
+
+With lifecycle hooks, you put instances into a wait state so you can perform custom actions on the instances.
+You can perform custom actions as the instances launch or before they terminate.
+
+In a warm pool configuration, lifecycle hooks can delay instances from stopping or hibernating.
+They also delay the instances from going into service during a scale-out event until they finish initializing.
+If you add a warm pool to your Amazon EC2 Auto Scaling group without a lifecycle hook, instances that take a long time to finish initializing might stop or hibernate
+They might then go into service during a scale-out event before they are ready.
+
+https://aws.amazon.com/blogs/compute/scaling-your-applications-faster-with-ec2-auto-scaling-warm-pools/
+
+https://docs.aws.amazon.com/autoscaling/ec2/userguide/scale-your-group.html
+
+

@@ -1,0 +1,24 @@
+Bootstrapping is the process of installing applications, dependencies, or customizations when an EC2 instance is launched:
+
+1-Configure a base Amazon EC2 image
+
+The first step in bootstrapping is to configure a base Amazon EC2 AMI.
+Perhaps it's an AMI you built or one you acquired from the AWS Marketplace.
+This AMI has the operating system, patches, and any base utilities required for your environment.
+
+Bootstrapping is very flexible. However, if you have a complex application or require large downloads, this option can be slower than prebaking.
+Bootstrapping is slower with deployments and scaling events because the AMI must boot first before it can invoke the user data script.
+The instance must be available with the operating system on it before any applications can be installed and patched.
+
+2-Create a user data script
+
+The second step is to add a script to the user data field when launching your image.
+To do this, provide commands or a command script to run when launching your instance.
+Input is base64 encoded when you launch your instance unless you select the User data has already been base64 encoded check box.
+
+3-Launching instance
+Using the standard base AMI, launch your EC2 instance. After the OS is up and running, it runs the user data script.
+The script automatically installs your applications, dependencies, and updates based on what's written in the user data script.
+
+4-Ready for use
+After the application finishes the install, the instance is up and ready to be used with no manual intervention on your part.

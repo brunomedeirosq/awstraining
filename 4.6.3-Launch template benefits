@@ -1,0 +1,19 @@
+Implementing a launch template helps you do the following:
+
+- Streamline and simplify the launch process.
+- Reduce the number of steps required to create an instance by capturing all the launch parameters in one resource.
+- Simplify implementation of standards and best practices.
+- Manage costs better.
+- Improve your security posture.
+- Minimize the risk of deployment errors.
+
+Adding a template configuration repository
+
+Amazon EC2 launch templates support the use of Parameter Store, a capability of AWS Systems Manager, for AMIs.
+
+With Parameter Store, you can enter configuration data, such as AMI IDs, license codes, and even account IDs and passwords, into a secure central location.
+
+This simplifies automation and reduces misconfiguration by eliminating the need to specify this information each time you create an instance.
+
+Parameter Store is covered in more detail later in this course.
+

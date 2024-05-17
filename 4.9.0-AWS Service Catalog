@@ -1,0 +1,133 @@
+Service Catalog provides you with the means to create and manage catalogs of IT services that your organization approves for AWS.
+
+These IT services include everything from Amazon EC2 AMIs, EC2 instances, storage, and databases to complete multi-tier application architectures.
+
+Service Catalog provides central management of commonly deployed IT services.
+
+It helps organizations achieve consistent governance and meet compliance requirements.
+
+End users can deploy only the approved IT services they need that follow the constraints set by your organization.
+
+benefits of using Service Catalog:
+
+- Standardization
+Administer and manage approved assets by restricting where the products launch, the type of instance allowed, and many other configuration options.
+The result is a standardized landscape for product provisioning for your entire organization.
+
+- Self-Service Discovery and Launch
+Users browse listings of products (services or applications) they have access to. Then, they locate the product they want to use and launch it on their own as a provisioned product.
+
+- Fine-grain access control
+Administrators assemble portfolios of products from their catalog and add constraints and resource tags to be used at provisioning.
+Afterwards, administrators grant access to the portfolio through IAM users and groups.
+
+- Extensibility and Version Control
+Administrators can add a product to any number of portfolios and restrict it without creating another copy.
+Updating the product to a new version propagates the update to all products in every portfolio that references it.
+
+Administrators and end users work with Service Catalog.
+
+Catalog administrators prepare CloudFormation templates, configure constraints, and manage IAM roles for products to provide advanced resource management.
+
+End users use their credentials to create authorized resources on AWS. Each user type has a set of tasks that are administrative or not administrative in purpose.
+
+Catalog administrators:
+
+- Design a template
+
+https://docs.aws.amazon.com/servicecatalog/latest/adminguide/getstarted-library.html
+
+- Create a portfolio
+
+A portfolio of products provides a consistent way to offer choices to end users.
+
+- Create products
+
+Create a product using your CloudFormation templates. In this step, open the portfolio, and then proceed with specifying the details of the product.
+After you create the product, you can view it in the portfolio.
+Now, you can manage versions of products instead of recreating them. End users will have access to the versions you specify.
+
+- Add constraints and grant access
+
+Constraints control the ways specific AWS resources are deployed for a product.
+
+You can use them to apply limits to products for governance or cost control.
+
+Granting a user access to a portfolio allows that user to browse the portfolio and launch the products in it.
+To control who can view and modify your catalog, apply IAM permissions. You can assign IAM permissions to IAM users, groups, and roles.
+
+- Test end-user experience
+
+Verify the end user can successfully access the end-user console view and launch your product. Sign in to the console as the end user and perform those tasks.
+
+End Users:
+
+- Browse products
+
+You can use the Service Catalog console to see a list of products and provisioned products.
+
+- Select a version
+
+The Product details page displays information about a product, including a description of the product, details about product versions, and support information.
+If multiple versions of a product are available, you can decide which version to use when you read the version descriptions. Typically, you should use the latest version of a product.
+
+- Populate details
+
+After selecting your version, provide any necessary parameters for customizing your requested resources. You can provide any required tags for your provisioned product.
+
+- Launch a product
+
+You can launch any product that appears in your Service Catalog products list.
+When launching a product, you create a provisioned product, usually an instance of the product, in a CloudFormation stack.
+A provisioned product in AWS is one or more cloud resources you manage as a single unit, such as compute instances, databases, or networking components.
+
+- Review outputs
+
+Provisioned products provide information, called outputs, when a product launches.
+Outputs usually display URLs, IP addresses, and database connection strings after the provisioned product launches.
+Each output has a key, value, and description.
+
+
+
+
+
+Additional Resources:
+
+
+Security best practices -> ervice Catalog provides a number of security features to consider as you develop and implement your own security policies.
+
+https://docs.aws.amazon.com/servicecatalog/latest/adminguide/security-best-practices.html
+
+You can define rules that limit the parameter values that a user enters when launching a product.
+These rules are called template constraints because they constrain how the AWS CloudFormation template for the product is deployed.
+You use a simple editor to create template constraints, and you apply them to individual products.
+
+ou can limit the access end users have to AWS resources when you attach an IAM policy to a launch role.
+You then use AWS Service Catalog to create a launch constraint to use the role when launching the product.
+
+Service Catalog monitoring -> You can monitor your Service Catalog resources using CloudWatch.
+
+https://docs.aws.amazon.com/servicecatalog/latest/adminguide/service-catalog-monitoring.html
+
+Monitoring is an important part of maintaining the reliability, availability, and performance of AWS Service Catalog and your AWS solutions.
+You should collect monitoring data from all of the parts of your AWS solution so that you can more easily debug a multi-point failure if one occurs.
+Before you start monitoring AWS Service Catalog, you should create a monitoring plan that includes answers to the following questions:
+
+What are your monitoring goals?
+
+What resources will you monitor?
+
+How often will you monitor these resources?
+
+What monitoring tools will you use?
+
+Who will perform the monitoring tasks?
+
+Who should be notified when something goes wrong?
+
+Managing budgets -> You can use AWS Budgets to track your service costs and usage in Service Catalog. You can associate budgets with Service Catalog products and portfolios.
+
+AWS Budgets gives you the ability to set custom budgets that alert you when your costs or usage exceed (or are forecasted to exceed) your budgeted amount.
+
+https://docs.aws.amazon.com/servicecatalog/latest/adminguide/catalogs_budgets.html
+

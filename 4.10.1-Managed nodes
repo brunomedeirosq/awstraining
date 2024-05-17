@@ -1,0 +1,123 @@
+A managed node is any machine that is configured for use with Systems Manager and has the SSM Agent running.
+The SSM Agent is software that runs on EC2 instances, edge devices, on-premises servers, and virtual machines.
+SSM Agent makes it possible for Systems Manager to update, manage, and configure these resources.
+The agent takes and processes requests from Systems Manager and then runs them exactly as specified in the request.
+
+https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent-technical-details.html
+
+By default, Systems Manager doesn't have permission to perform actions on your instances.
+You can provide instance permissions at the account level using an IAM role or at the instance level using an instance profile.
+
+If your use case permits, we recommend granting access at the account level using the Default Host Management Configuration.
+
+The Default Host Management Configuration empowers Systems Manager to manage your EC2 instances automatically.
+
+After you turn on this setting, all instances that use Instance Metadata Service Version 2 (IMDSv2) automatically become managed instances.
+
+Managing nodes using the SSM Agent
+
+For information about a hands-on workshop that teaches you how to install and configure SSM Agent on EC2 instances
+
+https://catalog.workshops.aws/getting-started-with-com/en-US/getting-started
+
+Using SSM documents
+
+A Systems Manager document (SSM document) defines the actions Systems Manager performs.
+SSM document types include Command documents, which are used by the State Manager and Run Command capabilities of AWS Systems Manager.
+Other types of SSM documents include Automation runbooks, which are used by the Systems Manager Automation capability.
+Systems Manager includes dozens of preconfigured documents you can use by specifying parameters at runtime.
+Documents can be expressed in JSON or YAML and include steps and parameters that you specify.
+
+Run Command
+
+With Run Command, a capability of AWS Systems Manager, you can eliminate the need to use bastion hosts, Secure Shell (SSH), or remote PowerShell.
+You can automate common administrative tasks and perform one-time configuration changes on your managed nodes.
+You can use Run Command from the console, AWS CLI, AWS Tools for PowerShell, or the AWS SDKs.
+
+The following are examples of when administrators use Run Command:
+
+- Install or bootstrap applications.
+- Build a deployment pipeline.
+- Capture log files when an instance is removed from an Amazon EC2 Auto Scaling group.
+- Join instances to a Windows domain.
+
+You can also restrict Run Command to only specific managed nodes.
+You do this by creating an IAM policy that includes a condition that the user can only run commands on nodes with specific tags.
+
+In this free hands-on tutorial, you learn how to use Systems Manager to remotely run commands on your EC2 instances.
+
+https://aws.amazon.com/getting-started/hands-on/remotely-run-commands-ec2-instance-systems-manager/
+
+State Manager
+
+A state is defined as the finalized configuration of an instance based on your business needs.
+
+The state includes the operating system version, patches, software, utilities, and agents that make up the finished state of the instance.
+
+State Manager, a capability of AWS Systems Manager, is a scalable configuration management service.
+
+It automates the process of keeping your Amazon EC2 infrastructure in a state you can define.
+
+It sets and maintains the targeted state of configuration for managed nodes and AWS resources in your AWS account.
+
+State Manager helps with compliance and governance to ensure that all instances meet the standards defined for your compliance goals.
+
+The three primary reasons to use State Manager are as follows:
+
+- Auto scaling
+
+State Manager monitors all instances launched in an account either manually or through Amazon EC2 Auto Scaling groups.
+If an instance comes online from an Amazon EC2 Auto Scaling group, any configurations defined for that instance (through tags or all nodes) are automatically applied.
+
+- Compliance reporting
+
+State Manager standardizes instances for convenient compliance reporting of required states for resources in your account.
+
+- Managing all nodes
+
+State Manager targets all the nodes in an account, so none of the instances are missed.
+
+Association
+
+A State Manager association is a configuration you assign to your AWS resources.
+The configuration defines the state you want to maintain on your resources.
+For example, an association can specify that antivirus software must be installed and running on a managed node or certain ports must be closed.
+
+An association specifies a schedule for applying the configuration onto the targets.
+For example, an association for antivirus software might run once a day on all managed nodes in an AWS account.
+If the software isn't installed on a node, the association can instruct State Manager to install it.
+If the software is installed, but the service isn't running, the association can instruct State Manager to start the service.
+
+
+How State Manager works:
+
+- Determine your end state
+
+What do you want your finalized configuration state to look like?
+Do you need to guarantee that your managed node is configured with specific applications, such as antivirus or malware applications?
+Do you want to automate the process of updating the SSM Agent or other AWS packages, such as AWSPVDriver package?
+Do you need to guarantee that specific ports are closed or open?
+
+To get started with State Manager, you determine the state you want to apply to your AWS resources.
+This state determines which SSM document you use to create a State Manager association.
+
+- Use a preconfigured SSM document
+
+Systems Manager includes dozens of preconfigured SSM documents you can use to create an association.
+Preconfigured documents are ready to perform common tasks, like installing applications, installing and configuring CloudWatch, running Systems Manager automations, and much more.
+You can view all SSM documents in the Systems Manager console.
+
+- Create an association
+
+You can create an association by using the Systems Manager console, AWS CLI, AWS Tools for PowerShell, or the Systems Manager API.
+When you create an association, you specify the following information:
+
+- A name for the association – For example, you might use name-of-your-workflow.
+
+- Parameters for the SSM document – For example, you can specify the path for the application to install or the script to run on the nodes.
+
+- Targets for the association – For example, you can target managed nodes by specifying tags, choosing individual node IDs, or choosing a group in AWS Resource Groups.
+You can also target all managed nodes in the current Region and AWS account.
+
+- A schedule for when or how often to apply the state – For example, you can specify a cron or rate expression.
+

@@ -1,0 +1,2 @@
+AWS provides many tools and resources to automate provisioning.
+For example, Amazon EC2 Auto Scaling groups provision instances based on demand. Systems Manager has an automation tool that you configure to provision instances based on runbooks.

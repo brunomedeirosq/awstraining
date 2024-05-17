@@ -1,0 +1,23 @@
+Automation
+
+is defined as the use of processes and cloud management tools to reduce or eliminate manual intervention.
+
+Automation focuses on the setup, configuration, deployment, and support of infrastructure and the applications that run on it.
+Using automation, you can deploy environments in a rapid, standardized, and repeatable manner.
+You can improve efficiency and lower costs by removing manual processes.
+
+Benefits of automating
+
+The primary benefit of automation is to reduce manual, repetitive, and labor-intensive tasks.
+With automation, you can deploy multiple identical instances securely and quickly.
+Deploying instances in an identical fashion removes human errors and inconsistencies that lead to deviations in your configuration.
+Identical instances help with inventory, patching, compliance, and troubleshooting.
+
+When troubleshooting, incidents do occur. You can decrease time to resolution because your infrastructure is a known, documented value.
+You can better gather troubleshooting information because automation minimizes the chance of one-off configurations or additional software mistakenly added during deployment.
+
+Observability, or how well you understand what is happening in your environment and why it's happening, is part of any discussion on automating.
+Automation creates consistency for you to deploy a common set of monitoring agents.
+These agents provide identical metrics, giving you the ability to build similar dashboards and similar alarms.
+Errors stand out in a consistently deployed and maintained environment.
+Familiarity with the consistent environment increases the effectiveness of administrators when troubleshooting or resolving errors.

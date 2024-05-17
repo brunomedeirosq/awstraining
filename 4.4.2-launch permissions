@@ -1,0 +1,6 @@
+Launch permissions control which AWS accounts can use the AMI to launch instances.
+
+The owner of an AMI determines its availability by specifying launch permissions. Launch permissions fall into the following three categories.
+Public - The owner of the AMI grants launch permissions to all AWS accounts.
+Explicit - The owner of the AMI grants launch permissions to specific AWS accounts, organizations, or organizational units.
+Implicit - The owner of the AMI has launch permissions for the AMI they own.

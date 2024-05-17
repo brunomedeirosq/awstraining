@@ -1,0 +1,53 @@
+This site contains AWS best practices for observability.
+
+-> https://aws-observability.github.io/observability-best-practices/
+
+This workshop is aimed at providing hands-on experience using the wide variety of tool sets AWS offers to set up monitoring and observability on your applications.
+
+-> https://catalog.workshops.aws/observability/en-US
+
+This collection of sample templates helps get you started with CloudFormation and quickly build your own templates.
+
+-> https://aws.amazon.com/cloudformation/resources/templates/
+
+This site describes how to build and use templates.
+
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-guide.html
+
+This is the AWS Training and Certification website, offering hundreds of hours of free AWS courses and training.
+
+-> https://explore.skillbuilder.aws/learn
+
+This is a resource home page where you can gain insights and improve the performance of your applications and infrastructure.
+
+-> https://aws.amazon.com/cloudops/monitoring-and-observability/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc&blog-posts-cards.sort-by=item.additionalFields.createdDate&blog-posts-cards.sort-order=desc
+
+This is an AWS blog for monitoring, metrics, CloudWatch, migration best practices, and more.
+
+-> https://aws.amazon.com/blogs/mt/
+
+This site provides examples of using AMI mappings to automatically update AMIs.
+
+-> https://aws-quickstart.github.io/use-amis.html
+
+This is the home page for the Amazon EC2 service. It provides links to documentation, use cases, FAQs, pricing, getting started guides, and much more.
+
+-> https://aws.amazon.com/ec2/
+
+This is a place to ask questions and receive answers from other Amazon EC2 users.
+
+-> https://forums.aws.amazon.com/forum.jspa?forumID=30
+
+This is a third-party website formerly known as EC2Instances.info that provides a free comparison of Amazon EC2 instances and costs.
+
+-> https://instances.vantage.sh/
+
+-> https://www.vantage.sh/blog/vantage-has-acquired-ec2instances-info
+
+This site explains a variety of ways to pay for Amazon EC2.
+
+-> https://aws.amazon.com/ec2/pricing/
+
+This site has information and resources for all aspects of Amazon EC2 Auto Scaling.
+
+-> https://aws.amazon.com/ec2/autoscaling/

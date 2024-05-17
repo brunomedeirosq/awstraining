@@ -1,0 +1,12 @@
+Launch templates store launch parameters, so you don't have to specify them every time you launch an instance.
+
+For example, a launch template can contain the AMI ID, instance type, and network settings that you typically use to launch instances.
+
+Launch templates streamline and simplify the launch process.
+
+They reduce the number of steps required to create an instance by capturing all the launch parameters in one resource.
+
+They also simplify the implementation of standards and best practices, help to better manage costs, improve your security posture, and minimize the risk of deployment errors.
+
+Spot instances is an unused EC2 instance that is available for less that the On-Demand price. Spot instances are well-suited for data-analysis, batch jobs, background processing, and optional
+tasks.

@@ -1,0 +1,34 @@
+Automation, a capability of AWS Systems Manager, helps you build automated solutions to deploy, configure, and manage AWS resources at scale. With Automation, you have granular control over the concurrency of your automations.
+This means you can specify the number of resources to target concurrently and the number of errors that can occur before an automation is stopped.
+
+To help you get started with Automation, AWS develops and maintains several predefined runbooks.
+
+A runbook is a series of standardized steps for implementing and configuring items in your environment. Think of a runbook as a how-to guide for items specific to your environment and your workloads.
+
+https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-documents.html
+
+Runbooks usually contain the information necessary to successfully implement the workload, service, or procedure.
+Having standard process documentation ensures consistency, implementation speed, response times, and reduced errors caused by manual processes.
+
+For example, the procedure to update static website content might include the following steps:
+
+1.Staging the content in an uploaded content location
+2.Updating the website to reference the new content
+3.Validating the display of the new content
+4.Removing old content
+
+The runbook might include steps to take if the new content does not display correctly. For example, roll back to prior content and notify the content team of the failure.
+
+You can build and create runbooks in many ways. AWS provides Incident Manager, a capability of AWS Systems Manager.
+It provides an Incident Manager console designed to assist you in mitigating and recovering from incidents affecting applications hosted on AWS.
+Incident Manager increases incident resolution by notifying your team of impact.
+It highlights relevant troubleshooting data and provides collaboration tools to get services back up and running.
+Incident Manager automates response plans and provides responder team escalation to help reduce the time to resolution of critical incidents.
+
+https://docs.aws.amazon.com/incident-manager/latest/userguide/what-is-incident-manager.html
+
+With Systems Manager, depending on your use case, you can use the predefined runbooks to perform a variety of tasks.
+You also can create your own custom runbooks that might better suit your needs.
+If you want to monitor the progress and status of your automations, you can use the Systems Manager console or your preferred command line tool.
+
+Automation also integrates with Amazon EventBridge to help you build event-driven architecture at scale.

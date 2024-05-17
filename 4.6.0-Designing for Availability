@@ -1,0 +1,15 @@
+
+Both AMIs and launch templates contain information to launch an instance, however we can't launch an instance just by specifying an AMI, we need AMI along with other options.
+
+Amazon EC2 launch instance wizard give us the following options:
+- instance type
+- key pair
+- network settings
+- configure storage
+- advanced details
+
+Using the launch instance wizard is fast and convenient if you are provisioning only a single instance.
+However, building hundreds of instances individually is prohibitive because of the time required.
+Knowing that many businesses must rapidly deploy multiple images, AWS provides a feature called launch templates.
+
+

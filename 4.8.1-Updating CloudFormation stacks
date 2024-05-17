@@ -1,0 +1,40 @@
+When you need to make changes to a stack's settings or change its resources, you update the stack instead of deleting it and creating a new stack.
+For example, in your VPC that has an EC2 instance, you can update the stack to change the instance's AMI ID.
+When you update a stack, you submit the AMI ID change. CloudFormation compares the changes you submit with the current state of your stack and updates only the AMI ID.
+It leaves the other VPC resources unchanged.
+
+When you submit an update, CloudFormation uses one of the following update behaviors:
+
+Update with no interruption:
+
+The resource is updated without disruption.
+
+Update with some interruption:
+
+You can expect some interruption with the resource, which can mean intermittent availability of the resource.
+
+Replacement:
+
+CloudFormation recreates the resource. The replacement is created first.
+Any dependencies are updated to the replacement.
+CloudFormation deletes the old resource as the last step.
+
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html
+
+CloudFormation provides two methods for updating stacks:
+
+direct update or change sets.
+
+When you directly update a stack, CloudFormation immediately deploys your changes that you submit. Use direct updates when you want to quickly deploy your updates.
+Direct updates can cause interruptions to your target AWS resources.
+
+The preferred method for updating risk-averse stacks is change sets.
+
+CloudFormation change sets
+
+Change sets provide you the option to preview how proposed changes to a stack might impact your running resources.
+Whether your changes delete or replace any critical resources, CloudFormation makes the changes to your stack only when you decide to deploy the change set.
+You can submit any amount of change sets you need before deploying the change to your stack.
+You create and manage change sets by using the CloudFormation console, AWS CLI, or the CloudFormation API.
+
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_EC2.html

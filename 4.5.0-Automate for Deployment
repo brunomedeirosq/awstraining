@@ -1,0 +1,15 @@
+4.5-Automate for Deployment
+
+Different deployment strategies
+
+Implementing the right deployment processes is a critical part of a complete, well-functioning automation solution.
+The deployment processes you choose depend on your necessary balance of control, speed, cost, risk tolerance, and other factors.
+
+Prebaking and bootstrapping
+
+An average quick launch of a basic EC2 instance takes roughly 5 minutes.
+When provisioned, the process requires additional time for installing patches, applications, utilities, and any customizations to be configured.
+This additional time to install components is called provisioning lag.
+
+For workloads that rely heavily on customizing or deploying applications onto EC2 instances,
+you can optimize your deployment time through bootstrapping and prebaking practices.

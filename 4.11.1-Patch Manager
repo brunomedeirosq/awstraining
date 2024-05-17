@@ -1,0 +1,93 @@
+Patch Baseline
+
+Patch Manager uses patch baselines that include rules for auto-approving patches within days of their release, in addition to optional lists of approved and rejected patches.
+When a patching operation runs, Patch Manager compares the currently applied patches to the new patches according to the rules in the patch baseline.
+
+You can choose for Patch Manager to show you only a report of missing patches (a scan operation).
+Another option is to choose for Patch Manager to automatically install all patches it finds missing from a managed node (a scan and install operation).
+
+Patch Group
+
+You can use a patch group to associate a managed node with a specific patch baseline.
+Patch groups help ensure that you deploy the appropriate patches, based on the associated patch baseline rules, to the correct set of nodes.
+Patch groups can also help you avoid deploying patches before they are adequately tested.
+For example, you can create patch groups for different environments (such as development, test, and production) and register each patch group to appropriate patch baselines.
+Each patch group can be patched on its own schedule.
+
+It's important to remember the following:
+
+- A managed node can only be in one patch group.
+- A patch group can be registered with only one patch baseline for each operating system type.
+- Patch groups use tags to help associate similar resources.
+
+Maintenance Window
+
+A maintenance window takes one or more actions in a given time frame.
+
+You can define a single maintenance window with start and end times.
+
+You can specify multiple tasks to run in this maintenance window.
+
+Use the maintenance window function if your high-priority operations include patching your managed nodes.
+You might also use the maintenance window function if you are running multiple types of tasks on your nodes during an update period.
+Another use you might have for maintenance window is controlling when update operations can be run on your nodes.
+
+The main use cases for maintenance windows are as follows:
+
+- Running multiple documents: Maintenance windows can run multiple tasks. Each task can use a different document type.
+As a result, you can build complex workflows using different tasks in a single maintenance window.
+
+- Patching: A maintenance window can provide patching support for all managed nodes in an account tagged with a specific tag or resource group.
+
+- Window actions: Maintenance windows make one or more sets of actions start in a specific time window.
+Maintenance windows actions won't start outside that time frame or window.
+Actions that already started will continue until finished, even if they finish outside the time window.
+
+Applying patches
+
+With Patch Manager, you can manage patches and patch a single instance or application in your environment.
+You can also patch hundreds or thousands of instances or applications. Sofía explains that Patch Manager automates the patching of managed nodes.
+It can support a variety of operating systems and applications by just scanning the environment or scanning and applying patches.
+
+The team can patch AWS resources, such as EC2 instances, or on-premises servers and virtual machines.
+Patch Manager uses patch baselines, which include rules for auto approving patches, so the team doesn't need to manually approve which types of patches to apply.
+
+https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-selecting-patches.html
+
+Patch Manager determines which patches to install and how to install them on each supported operating system.
+The primary focus of Patch Manager is to install operating system security-related updates on managed nodes.
+By default, Patch Manager doesn't install all available patches. Instead, it installs a smaller set of patches focused on security.
+
+To begin using Patch Manager, define a default patch baseline by using a default baseline or customize your own.
+This gives you control over which patches you approve and don't approve to apply.
+Next, you create a patch group. This patch group determines the groups of instances you want to patch.
+Once complete, create a maintenance window for the best time to apply the patches.
+You can set a window or run the patches immediately using Run Command. Finally you begin patching and then run compliance checks.
+
+After a scan operation, you can use the Systems Manager console to view information about which of your managed nodes are out of patch compliance.
+Also, you can view which patches are missing from each of those nodes. You can generate patch compliance reports in .csv format that are sent to an S3 bucket of your choice.
+You can generate one-time reports or generate reports on a regular schedule.
+
+For a single managed node, reports include details of all patches for the node.
+For a report on all managed nodes, reports include only a summary of the missing patches.
+After a report is generated, you can use a tool like Amazon QuickSight to import and analyze the data.
+
+Prerequisites for running Patch Manager:
+
+- Run SSM Agent: The SSM Agent must be running on each managed node you patch.
+
+- Use the correct Python version: For macOS and most Linux operating systems, Patch Manager currently supports Python versions 2.6–3.10.
+
+- Ensure connectivity to the patch source: Patch Manager requires either a direct connection to the internet or access to the source repositories where the patches reside.
+Windows Server managed nodes must be able to connect to the Windows Update Catalog or Windows Server Update Services (WSUS). https://www.catalog.update.microsoft.com/home.aspx
+
+- Ensure access to AWS managed S3 buckets: When performing various Systems Manager operations, the SSM Agent accesses many S3 buckets.
+These S3 buckets are publicly accessible. By default, SSM Agent connects to them using HTTP calls. https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent-minimum-s3-permissions.html
+
+- Use a supported operating system: The Patch Manager capability doesn't support all the same operating systems versions that are supported by other Systems Manager capabilities.
+For example, Patch Manager doesn't support CentOS 6.3 or Raspberry Pi OS 8 (Jessie). https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-prerequisites.html
+
+Getting Started with Centralized Operations Management on AWS -> https://catalog.workshops.aws/getting-started-with-com/en-US/patch-management/org-patch-reporting
+
+
+

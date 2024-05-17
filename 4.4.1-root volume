@@ -1,0 +1,52 @@
+The root volume is one or more Amazon Elastic Block Store (Amazon EBS) snapshots.
+
+The root volume of an instance is either an EBS volume or an instance store volume.
+For instance store-backed AMIs, you need a template for the root volume of the instance
+(for example, an operating system, an application server, and applications).
+
+For more information about the root device volume, see Amazon EC2 instance root device volume.(opens in a new tab)
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html
+
+When you launch an instance, we create a root volume for the instance. The root volume contains the image used to boot the instance.
+Each instance has a single root volume. You can add storage volumes to your instances when you launch them or after they are running.
+
+You can launch an instance from either an instance store-backed AMI or an Amazon EBS-backed AMI.
+
+We recommend that you use AMIs backed by Amazon EBS, because these instances launch faster and use persistent storage.
+
+Storage for the root device:
+
+All AMIs are categorized as either backed by Amazon EBS or backed by instance store.
+
+Amazon EBS-backed AMI – The root device for an instance launched from the AMI is an Amazon Elastic Block Store (Amazon EBS) volume created from an Amazon EBS snapshot.
+
+Amazon instance store-backed AMI – The root device for an instance launched from the AMI is an instance store volume created from a template stored in Amazon S3.
+
+Amazon EBS-backed instances:
+
+Instances that use Amazon EBS for the root volume automatically have an Amazon EBS volume attached. When you launch an Amazon EBS-backed instance,
+we create an Amazon EBS volume for each Amazon EBS snapshot referenced by the AMI you use. You can optionally use other Amazon EBS volumes or instance store volumes,
+depending on the instance type.
+An Amazon EBS-backed instance can be stopped and later restarted without affecting data stored in the attached volumes.
+There are various instance– and volume-related tasks you can do when an Amazon EBS-backed instance is in a stopped state.
+For example, you can modify the properties of the instance, change its size, or update the kernel it is using,
+or you can attach your root volume to a different running instance for debugging or any other purpose. For more information, see Amazon EBS volumes. https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volumes.html
+
+Instance store-backed instances:
+
+Instances that use instance stores for the root volume automatically have one or more instance store volumes available,
+with one volume serving as the root volume. When an instance is launched, the image that is used to boot the instance is copied to the root volume.
+Note that you can optionally use additional instance store volumes, depending on the instance type.
+Any data on the instance store volumes persists as long as the instance is running,
+but this data is deleted when the instance is terminated (instance store-backed instances do not support the Stop action) or if it fails (such as if an underlying drive has issues).
+For more information, see Amazon EC2 instance store. https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html
+
+
+To create an AMI backed by Amazon EBS, see Create an Amazon EBS-Backed Linux AMI(opens in a new tab).
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html
+
+To create an instance store-backed AMI, see Create an Instance Store-Backed Linux AMI(opens in a new tab).
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-instance-store.html
